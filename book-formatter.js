@@ -1,4 +1,5 @@
 var fs = require('fs');
+var cheerio = require('cheerio');
 
 var filename = process.argv.pop();
 var dest_filename = getDestFilename(filename);
@@ -8,7 +9,18 @@ var html = fs.readFileSync(filename, 'utf8');
 // replace Google Doc's 8 &nbsp; indentation
 html = html.replace(/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/g, '');
 
-fs.writeFileSync(dest_filename, html);
+// add decent paragraph style
+$ = cheerio.load(html);
+var style = $('style').html();
+console.log(style);
+style = style.replace(/\{[^\}]+\}/g, '{ }');
+style += '\np { text-indent: 2em; margin: 0; }\n';
+$('style').html(style);
+
+// output the book
+fs.writeFileSync(dest_filename, $.html());
+
+console.log('Book formatted and output to: ' + dest_filename);
 
 function getDestFilename(filename) {
   var filename_parts = filename.split('.');
