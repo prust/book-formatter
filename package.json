@@ -1,0 +1,29 @@
+{
+  "name": "book-formatter",
+  "version": "0.1.0",
+  "description": "Converts HTML downloaded from Google Docs into something that will generate a beautiful book in kindlegen",
+  "main": "book-formatter.js",
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prust/book-formatter.git"
+  },
+  "keywords": [
+    "book",
+    "formatting",
+    "html",
+    "kindle"
+  ],
+  "author": "Peter Rust",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prust/book-formatter/issues"
+  },
+  "homepage": "https://github.com/prust/book-formatter#readme"
+}
